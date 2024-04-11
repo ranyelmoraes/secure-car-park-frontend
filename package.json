@@ -10,7 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "postinstall": "npm install -g @angular/cli"
+    "postinstall": "npm install -g @angular/cli && npm install --save-dev @angular-devkit/build-angular"
   },
   "private": true,
   "dependencies": {
