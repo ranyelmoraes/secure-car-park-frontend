@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { apiBaseUrl } from '../../config.js';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,7 @@ export class HomePage {
     this.router.navigate(['/car']);
   }
   getData() {
-    this.http.get('http://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/users').subscribe(data => {
+    this.http.get( `${apiBaseUrl}` + '/users').subscribe(data => {
       console.log(data);
       this.data = data;
     }, e => {
@@ -48,7 +49,7 @@ export class HomePage {
   }
 
   getCars() {
-    this.http.get('http://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/cars').subscribe(data => {
+    this.http.get(`${apiBaseUrl}` + '/cars').subscribe(data => {
       console.log(data);
       this.carData = data;
     }, e => {

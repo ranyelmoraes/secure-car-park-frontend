@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarRegistration } from 'src/app/account/param/CarRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { apiBaseUrl} from "../../../config.js";
 
 @Component({
   selector: 'app-car',
@@ -31,12 +32,12 @@ export class CarPage implements OnInit {
       this.registerFormGroup.get("model")?.value,
       this.registerFormGroup.get("color")?.value,
     )
-    this.http.post('http://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/car', request).subscribe(data => {
+    this.http.post(`${apiBaseUrl}/cars`, request).subscribe(data => {
       console.log(data);
       this.router.navigate(['/home']);
     }, error => {
       console.log(error);
-    });
+    }); 
   }
 
 }

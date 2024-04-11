@@ -5,19 +5,18 @@ import { Observable, throwError } from 'rxjs';
 import { AuthenticationRequest } from 'src/app/account/param/AuthenticationRequest';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { RegistrationRequest } from '../account/param/RegistrationRequest';
+import { apiBaseUrl } from "../../config.js";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  API_URL = "http://securecarpark-api-dd4eb9b7d738.herokuapp.com/api";
-
   isUserLoggedIn = false;
   constructor(private http: HttpClient, private router: Router, public jwtHelper: JwtHelperService) { }
 
   userLogin(request: AuthenticationRequest) {
-    return this.http.post(`${this.API_URL}/signin`, request)
+    return this.http.post(`${apiBaseUrl}` + 'api/signin', request)
       .toPromise().then((response: any) => {
         if (response?.token != null) {
           localStorage.setItem("sb_s_token", response?.token);
