@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service'
 import { AuthenticationRequest } from './../../param/AuthenticationRequest';
 import { Router } from '@angular/router';
@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
           this.authenticationService.redirectTo('/home');
         }
       }).catch((ex: any) => {
-        this.toastMessage=ex;
+        this.toastMessage = ex;
         this.setOpen(true);
       });;
     }
