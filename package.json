@@ -5,9 +5,9 @@
   "homepage": "/home",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "ionic serve",
+    "build": "ionic build",
+    "watch": "ionic build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
   },
