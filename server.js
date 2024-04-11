@@ -1,23 +1,30 @@
-var express = require('express');
-var app = express();
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+"use strict";
+const express = require("express");
+const compression = require('compression');
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ 'extended': 'true' }));
-app.use(bodyParser.json());
-app.use(cors());
+// config
+const port = process.env.PORT || 3000;
+const app_folder = "./www";
+const options = {
+    dotfiles: 'ignore',
+    etag: false,
+    extensions: ['html', 'js', 'scss', 'css'],
+    index: false,
+    maxAge: '1y',
+    redirect: true,
+}
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+// create app
+const app = express();
+app.use(compression());
+app.use(express.static(app_folder, options));
+
+// serve angular paths
+app.all('*', function (req, res) {
+    res.status(200).sendFile(`/`, { root: app_folder });
 });
 
-app.use(express.static('www'));
-app.set('port', process.env.PORT || 5000);
-app.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+// start listening
+app.listen(port, function () {
+    console.log("Node Express server for " + app.name + " listening on http://localhost:" + port);
 });
