@@ -28,9 +28,9 @@ export class CarPage implements OnInit {
   }
 
   adicionarCarro() {
-    var request: CarRegistration = new CarRegistration(this.registerFormGroup.get("year")?.value,
+    var request: CarRegistration = new CarRegistration(
+      this.registerFormGroup.get("year")?.value,
       this.registerFormGroup.get("licensePlate")?.value,
-      this.registerFormGroup.get("birthday")?.value,
       this.registerFormGroup.get("model")?.value,
       this.registerFormGroup.get("color")?.value,
     )

@@ -5,7 +5,6 @@ export class CarRegistration{
     color: String;
 
     constructor(year: String,
-        lastName: String,
         licensePlate: String,
         model: String,
         color: String,){
