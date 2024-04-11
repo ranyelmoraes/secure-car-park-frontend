@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Secure Car Park - Interface - Versão Beta
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu">
+
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Secure Car Park - Interface</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h2 style="text-align: center;">Usuários Cadastrados</h2>
+
+  <ion-card *ngFor="let user of data">
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+          <p>Email: {{ user.email }}</p>
+          <p>Data de Nascimento: {{ user.birthday | date }}</p>
+          <p>Telefone: {{ user.phone }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <h2 style="text-align: center; margin-top: 10px;">Meus veículos</h2>
+
+  <ion-card *ngIf="logged">
+    <ion-card-header>
+      <!-- <ion-card-title>{{ user.firstName }}'s Cars</ion-card-title> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item lines="none">
+          <ion-label>Model</ion-label>
+          <ion-label>License Plate</ion-label>
+          <ion-label>Year</ion-label>
+          <ion-label>Color</ion-label>
+        </ion-item>
+        <ion-item lines="none" *ngFor="let car of carData">
+          <ion-icon name="car-sport-outline" style="margin-right: 1%; color: black"></ion-icon>
+          <ion-label>{{ car.model }}</ion-label>
+          <ion-label>{{ car.licensePlate }}</ion-label>
+          <ion-label>{{ car.year }}</ion-label>
+          <ion-label>{{ car.color }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="text-align: center; margin-top: 50px;" *ngIf="!logged">
+    <ion-card-header>
+      <ion-card-title>Por favor, faça o login para visualizar essas informações</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="redirectToLogin()">Login</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button style="width: 60px; height: 60px;" color="primary" (click)="redirectToCreateUser()">
+        Usuário
+      </ion-fab-button>
+      <ion-fab-button  style="width: 60px; height: 60px;"color="secondary" (click)="redirectToCreateCar()">
+        Carro
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

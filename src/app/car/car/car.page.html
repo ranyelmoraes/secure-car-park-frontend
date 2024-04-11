@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="text-align: center;">
+    <ion-title>Adicione um Carro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="registerFormGroup">
+    <ion-item lines="none" class="ion-item">
+      <fieldset  class="input-item">
+        <legend>Ano</legend> 
+        <ion-input formControlName="year" type="text" placeholder="Ano de Fabricação"></ion-input>
+      </fieldset>
+    </ion-item>
+    <ion-item lines="none" class="ion-item">
+      <fieldset  class="input-item">
+        <legend>Placa </legend> 
+        <ion-input formControlName="licensePlate" type="text" placeholder="Placa do veículo"></ion-input>
+      </fieldset>
+    </ion-item>
+    <ion-item lines="none" class="ion-item">
+      <fieldset  class="input-item">
+        <legend>Modelo</legend> 
+        <ion-input formControlName="model" type="text" placeholder="Modelo do veículo"></ion-input>
+      </fieldset>
+    </ion-item>
+    <ion-item lines="none" class="ion-item">
+      <fieldset  class="input-item">
+        <legend>color</legend> 
+        <ion-input formControlName="color" type="text" placeholder="Cor do veículo"></ion-input>
+      </fieldset>
+    </ion-item>
+    <ion-button class="login-button" (click)="adicionarCarro()" id="open-loading" expand="block">Adicionar Carro</ion-button>
+  </form>
+</ion-content>

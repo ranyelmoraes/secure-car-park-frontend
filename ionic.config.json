@@ -1,0 +1,7 @@
+{
+  "name": "secure-car-park-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

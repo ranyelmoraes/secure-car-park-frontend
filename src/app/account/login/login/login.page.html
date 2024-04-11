@@ -1,0 +1,94 @@
+<ion-content [fullscreen]="true">
+  <div class="container" *ngIf="screen == 'signin'">
+    <h1 class="heading">Secure<br><br></h1>
+    <p class="para">Car Park</p>
+    <form [formGroup]="loginFormGroup">
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>login</legend>
+          <ion-input formControlName="login" type="text" placeholder="login"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Password</legend>
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-button class="login-button" (click)="login()" id="open-loading" expand="block">Login</ion-button>
+      <p class="signup-text">Ainda não tem conta? &nbsp;<a (click)="change('signup')">Cadastre-se</a></p>
+      <hr />
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button color="light"><ion-icon name="logo-github"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="light"><ion-icon name="logo-linkedin"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </form>
+  </div>
+  <div class="container"  *ngIf="screen == 'signup'">
+    <h1 class="heading">Crie sua conta Gratuitamente<br><br></h1>
+    <p class="para">Preencha para começarmos</p>
+    <form [formGroup]="registerFormGroup">
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>First Name</legend> 
+          <ion-input formControlName="firstName" type="text" placeholder="First name"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Last Name</legend> 
+          <ion-input formControlName="lastName" type="text" placeholder="Last name"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Birthday</legend> 
+          <ion-input formControlName="birthday" type="date" placeholder="birthday"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Email</legend> 
+          <ion-input formControlName="email" type="email" placeholder="example@domain.com"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Phone</legend> 
+          <ion-input formControlName="phone" type="text" placeholder="+81912345678"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Login</legend> 
+          <ion-input formControlName="login" type="text" placeholder="login"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Senha</legend> 
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Confirmação de Senha</legend> 
+          <ion-input formControlName="confirmPassword" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <p class="signup-text">Already have an account&nbsp;<a (click)="change('signin')">Log In</a></p>
+      <ion-button class="login-button" (click)="register()" expand="block">Sign Up</ion-button>
+    </form>
+  </div>
+
+  <ion-toast [isOpen]="isToastOpen" message="{{toastMessage}}" [duration]="4000"
+    (didDismiss)="setOpen(false)"></ion-toast>
+</ion-content>
+<ion-loading trigger="open-loading" message="Loading..." duration="3000" class="custom-loading"></ion-loading>
