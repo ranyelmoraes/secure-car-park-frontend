@@ -1,8 +1,8 @@
 {
   "name": "secure-car-park-frontend",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Ranyel Moraes",
+  "homepage": "/home",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,11 +13,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^17.3.3",
-    "@angular-devkit/build-angular": "^17.0.0",
-    "@angular/compiler-cli": "^17.0.2",
-    "@angular/language-service": "^17.0.2",
     "@angular/animations": "^17.0.2",
+    "@angular/cli": "^17.3.3",
     "@angular/common": "^17.0.2",
     "@angular/compiler": "^17.0.2",
     "@angular/core": "^17.0.2",
@@ -25,6 +22,9 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
+    "@angular-devkit/build-angular": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.2",
+    "@angular/language-service": "^17.0.2",
     "@auth0/angular-jwt": "^5.2.0",
     "@capacitor/app": "5.0.7",
     "@capacitor/core": "5.7.4",
@@ -67,5 +67,5 @@
     "lato-font": "^3.0.0",
     "typescript": "~5.2.2"
   },
-  "description": "An Ionic project"
+  "description": "Securecarpark-frontend"
 }
