@@ -5,11 +5,13 @@
   "homepage": "/home",
   "scripts": {
     "ng": "ng",
-    "start": "ionic serve",
-    "build": "ionic build",
-    "watch": "ionic build --watch --configuration development",
+    "start": "node server.js",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "postinstall": "ng build --aot -prod",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -33,9 +35,12 @@
     "@capacitor/status-bar": "5.0.7",
     "@ionic/angular": "^7.0.0",
     "angular-jwt": "github:auth0/angular-jwt",
+    "express": "^4.19.2",
     "ionicons": "^7.0.0",
+    "path": "^0.12.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "typescript": "~5.2.2",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
@@ -53,6 +58,7 @@
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "enhanced-resolve": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
