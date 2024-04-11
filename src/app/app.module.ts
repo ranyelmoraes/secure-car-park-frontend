@@ -10,7 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationInterceptorProvider } from './services/authentication.interceptor';
-import {apiBaseUrl} from '../config.js'
+import { environment } from 'src/environments/environment';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -23,7 +23,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: [apiBaseUrl],
+        allowedDomains: [`${environment.API_BASE_URL}`],
       },
     })
   ],

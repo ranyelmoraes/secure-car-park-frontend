@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarRegistration } from 'src/app/account/param/CarRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { apiBaseUrl} from "../../../config.js";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-car',
@@ -12,6 +12,8 @@ import { apiBaseUrl} from "../../../config.js";
   styleUrls: ['./car.page.scss'],
 })
 export class CarPage implements OnInit {
+
+  private readonly API_BASE_URL = `${environment.API_BASE_URL}`;
 
   registerFormGroup: FormGroup = new FormGroup({
     year: new FormControl("", [Validators.required]),
@@ -32,7 +34,7 @@ export class CarPage implements OnInit {
       this.registerFormGroup.get("model")?.value,
       this.registerFormGroup.get("color")?.value,
     )
-    this.http.post(`${apiBaseUrl}/cars`, request).subscribe(data => {
+    this.http.post(this.API_BASE_URL + '/cars', request).subscribe(data => {
       console.log(data);
       this.router.navigate(['/home']);
     }, error => {

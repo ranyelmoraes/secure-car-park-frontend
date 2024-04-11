@@ -1,22 +1,23 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
 import { AuthenticationRequest } from 'src/app/account/param/AuthenticationRequest';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { RegistrationRequest } from '../account/param/RegistrationRequest';
-import { apiBaseUrl } from "../../config.js";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  
+  private readonly API_BASE_URL = `${environment.API_BASE_URL}`;
 
   isUserLoggedIn = false;
   constructor(private http: HttpClient, private router: Router, public jwtHelper: JwtHelperService) { }
 
   userLogin(request: AuthenticationRequest) {
-    return this.http.post(`${apiBaseUrl}` + 'api/signin', request)
+    return this.http.post(this.API_BASE_URL + '/signin', request)
       .toPromise().then((response: any) => {
         if (response?.token != null) {
           localStorage.setItem("sb_s_token", response?.token);
@@ -49,7 +50,7 @@ export class AuthenticationService {
   }
 
   userRegister(request: RegistrationRequest): Promise<any> {
-    return this.http.post<any>(`${this.API_URL}/users`, request)
+    return this.http.post<any>( this.API_BASE_URL + '/users', request)
       .toPromise().then((response: any) => {
         return response?.Data;
       }).catch((e) => {

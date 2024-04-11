@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { apiBaseUrl } from '../../config.js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +13,7 @@ export class HomePage {
   data: any;
   carData: any;
   logged: boolean;
+  private readonly API_BASE_URL = `${environment.API_BASE_URL}`;
   constructor(public http: HttpClient, private router: Router, private authService: AuthenticationService) {
     this.logged = false;
     this.getData();
@@ -40,7 +41,7 @@ export class HomePage {
     this.router.navigate(['/car']);
   }
   getData() {
-    this.http.get( `${apiBaseUrl}` + '/users').subscribe(data => {
+    this.http.get(this.API_BASE_URL+'/users').subscribe(data => {
       console.log(data);
       this.data = data;
     }, e => {
@@ -49,7 +50,7 @@ export class HomePage {
   }
 
   getCars() {
-    this.http.get(`${apiBaseUrl}` + '/cars').subscribe(data => {
+    this.http.get(this.API_BASE_URL+'/cars').subscribe(data => {
       console.log(data);
       this.carData = data;
     }, e => {
