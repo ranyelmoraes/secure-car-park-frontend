@@ -32,29 +32,29 @@ Este projeto consiste em um aplicativo híbrido desenvolvido com Ionic e Angular
 
 ## Executando o Projeto Locamente:
 
-1. **Clonar o Repositório:**
+**Clonar o Repositório:**
 
-git clone https://github.com/ranyelmoraes/secure-car-park-frontend.git
+- git clone https://github.com/ranyelmoraes/secure-car-park-frontend.git
 
 **Instalar as Dependências:**
 
-npm install
+- npm install
 
 **Executar o Aplicativo:**
 
-ionic serve
+- ionic serve
 
-## Para publicação, utilizei o node/express para servir os arquivos estáticos do frontend
+**Para publicação, utilizei o node/express para servir os arquivos estáticos do frontend**
 
-## Realizar build que o express irá utilizar:
+**Realizar build que o express irá utilizar:**
 
-ionic run build
+- ionic run build
 
-## Iniciar aplicação com node/express
+**Iniciar aplicação com node/express**
 
-node server.js
+- node server.js
 
-Versões do Node utilizada é a v20.12.2
+**Versões do Node utilizada é a v20.12.2**
 
 
 4. **Acesso ao Aplicativo:**
